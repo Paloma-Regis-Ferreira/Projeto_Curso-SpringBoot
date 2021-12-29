@@ -1,6 +1,8 @@
 package com.example.demo.course.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -21,6 +23,7 @@ public class User implements Serializable{
 	private String fone;
 	private String password;
 	
+	private List<Order> orders = new ArrayList<>();
 	public User() {
 	}//obrigatorio com framework
 
@@ -71,6 +74,10 @@ public class User implements Serializable{
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public List<Order> getOrders() {
+		return orders;
 	}
 
 	@Override
