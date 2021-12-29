@@ -8,8 +8,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "tb_order")//o nome deu conflito com palavra reservada
 public class Order implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
@@ -18,6 +22,8 @@ public class Order implements Serializable{
 	private Long id;
 	private Instant moment;
 	
+	@ManyToOne
+	@JoinColumn(name = "client_id")//nome da chave estrangeira
 	private User client;
 	
 	public Order() {
