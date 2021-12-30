@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "tb_user")
 public class User implements Serializable{
@@ -26,7 +28,8 @@ public class User implements Serializable{
 	private String fone;
 	private String password;
 	
-	@OneToMany(mappedBy = "client")//valor do atributo na associação
+	@JsonIgnore
+	@OneToMany(mappedBy = "client")//valor do atributo na associação --json ingnore evita looping
 	private List<Order> orders = new ArrayList<>();
 	
 	public User() {
